@@ -2,6 +2,15 @@
 - name: install nginx
   yum: name=nginx
 
+- name: configure nginx
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: reload nginx
+
 - name: start nginx service
   service:
     name: nginx
