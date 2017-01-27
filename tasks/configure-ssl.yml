@@ -1,0 +1,21 @@
+---
+- name: create /etc/nginx/ssl dir
+  file:
+    path: /etc/nginx/ssl
+    owner: root
+    group: root
+    mode: 0700
+    state: directory
+
+# this one is expensive... could take over 45 min or run completely in under 5 min
+- name: generate diffe-hellman parameters using 4096 bit long safe prime; this could take a while...
+  command: openssl dhparam -out /etc/nginx/ssl/dhparam.pem 4096
+  args:
+    creates: /etc/nginx/ssl/dhparam.pem
+
+- name: set permission on dhparam.pem
+  file:
+    path: /etc/nginx/ssl/dhparam.pem
+    owner: root
+    group: root
+    mode: 0600

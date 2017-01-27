@@ -11,6 +11,8 @@
     mode: 0644
   notify: reload nginx
 
+- include: configure-ssl.yml
+
 - name: start nginx service
   service:
     name: nginx
