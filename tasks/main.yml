@@ -13,6 +13,15 @@
 
 - include: configure-ssl.yml
 
+- name: configure vhosts
+  include: vhost.yml
+  args:
+    vhost_name: "{{ item.name }}"
+    vhost_default: "{{ item.default|default(true) }}"
+    vhost_pool: "{{ item.pool }}"
+    vhost_params: "{{ item.params|default({}) }}"
+  with_items: "{{ nginx_vhosts }}"
+
 - name: start nginx service
   service:
     name: nginx

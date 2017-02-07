@@ -6,3 +6,13 @@ nginx_worker_processes: "{{ ansible_processor_vcpus|default(ansible_processor_co
 nginx_worker_rlimit_nofile: 150000
 
 nginx_http_x_server: "{{ ansible_hostname }}"
+
+nginx_vhosts:
+  - name:
+    pool:
+    default: yes
+    params:
+      server_name:
+      webroot:
+      proxy_port:
+      backend_port:
