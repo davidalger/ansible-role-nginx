@@ -20,6 +20,7 @@
   notify: reload nginx
   register: configure_result
 
+- include: nginx-extras.yml
 - include: ssl-configure.yml
 - include: ssl-selfsign.yml
   args:

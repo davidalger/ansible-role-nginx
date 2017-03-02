@@ -21,3 +21,5 @@ nginx_backends:
     pool:
     listen:
     webroot:
+
+nginx_config_hsts: yes

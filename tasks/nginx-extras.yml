@@ -1,0 +1,14 @@
+---
+- name: configure default extras
+  template:
+    src: default.d/{{ item }}.conf
+    dest: /etc/nginx/default.d/{{ item }}.conf
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - nginx-status
+    - proxy
+    - secure
+    - settings
+  notify: reload nginx
