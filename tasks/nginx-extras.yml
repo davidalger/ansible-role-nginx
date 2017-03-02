@@ -12,3 +12,15 @@
     - secure
     - settings
   notify: reload nginx
+
+- name: configure available extras
+  template:
+    src: available.d/{{ item }}.conf
+    dest: /etc/nginx/available.d/{{ item }}.conf
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - basicauth
+    - php-status
+  notify: reload nginx
