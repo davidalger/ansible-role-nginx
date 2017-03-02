@@ -5,8 +5,6 @@ nginx_pid: /var/run/nginx.pid
 nginx_worker_processes: "{{ ansible_processor_vcpus|default(ansible_processor_cores) }}"
 nginx_worker_rlimit_nofile: 150000
 
-nginx_http_x_server: "{{ ansible_hostname }}"
-
 nginx_groups: []
 
 nginx_vhosts:
