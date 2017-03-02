@@ -4,7 +4,7 @@
     path: /etc/nginx/ssl
     owner: root
     group: root
-    mode: 0700
+    mode: 0600
     state: directory
 
 # this one is expensive... could take over 45 min or run completely in under 5 min

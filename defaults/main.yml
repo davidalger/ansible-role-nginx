@@ -7,6 +7,8 @@ nginx_worker_rlimit_nofile: 150000
 
 nginx_http_x_server: "{{ ansible_hostname }}"
 
+nginx_groups: []
+
 nginx_vhosts:
   - name:
     pool:
@@ -15,4 +17,9 @@ nginx_vhosts:
       server_name:
       webroot:
       proxy_port:
-      backend_port:
+
+nginx_backends:
+  - name:
+    pool:
+    listen:
+    webroot:

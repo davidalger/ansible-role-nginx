@@ -2,6 +2,14 @@
 - name: install nginx
   yum: name=nginx
 
+- name: add nginx to groups
+  user:
+    name: nginx
+    append: yes
+    groups: "{{ item }}"
+  with_items: "{{ nginx_groups }}"
+  notify: restart nginx
+
 - name: configure nginx
   template:
     src: nginx.conf
@@ -10,8 +18,13 @@
     group: root
     mode: 0644
   notify: reload nginx
+  register: configure_result
 
-- include: configure-ssl.yml
+- include: ssl-configure.yml
+- include: ssl-selfsign.yml
+  args:
+    common_name: "{{ item.name }}"
+  with_items: "{{ nginx_vhosts }}"
 
 - name: configure vhosts
   include: vhost.yml
@@ -22,8 +35,23 @@
     vhost_params: "{{ item.params|default({}) }}"
   with_items: "{{ nginx_vhosts }}"
 
+- name: configure backends
+  include: backend.yml
+  args:
+    backend_name: "{{ item.name }}"
+    backend_pool: "{{ item.pool }}"
+    backend_listen: "{{ item.listen }}"
+    backend_webroot: "{{ item.webroot }}"
+  with_items: "{{ nginx_backends }}"
+
+# Ensure nginx is started and enabled in chkconfig
 - name: start nginx service
   service:
     name: nginx
     state: started
     enabled: yes
+
+# reload nginx now if nginx.conf was touched; this allows nginx to disassociate with previous user
+- name: restart nginx service
+  service: name=nginx state=restarted
+  when: configure_result|changed
