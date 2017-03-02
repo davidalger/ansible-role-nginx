@@ -6,6 +6,7 @@
                -subj "/C=US/ST=Reality/L=Dissident/O=Ansible/CN={{ common_name }}"
   args:
     creates: /etc/nginx/ssl/{{ common_name }}.key
+  register: result
 
 - name: enforce permission on key/cert files
   file:
@@ -18,3 +19,4 @@
     - /etc/nginx/ssl/{{ common_name }}.crt
   loop_control:
       loop_var: inner_item
+  when: result|changed
