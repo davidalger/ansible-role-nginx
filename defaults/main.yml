@@ -22,6 +22,11 @@ nginx_backends:
     listen:
     webroot:
 
+nginx_domain_redirects:
+  - domain:
+    target:
+    include_uri: no
+
 nginx_config_hsts: yes
 
 # Optional array of additional IPs (may use CIDR notation) to whitelist in basicauth configuration

@@ -20,15 +20,20 @@
   notify: reload nginx
   register: configure_result
 
-- include: nginx-extras.yml
-- include: ssl-configure.yml
-- include: ssl-selfsign.yml
+- name: configure ssl
+  include: ssl-configure.yml
+
+- name: selfsign ssl certificates
+  include: ssl-selfsign.yml
   args:
     common_name: "{{ item.name }}"
   with_items: "{{ nginx_vhosts }}"
 
+- name: configure extras
+  include: nginx-extras.yml
+
 - name: configure vhosts
-  include: vhost.yml
+  include: nginx-vhost.yml
   args:
     vhost_name: "{{ item.name }}"
     vhost_default: "{{ item.default|default(true) }}"
@@ -37,13 +42,21 @@
   with_items: "{{ nginx_vhosts }}"
 
 - name: configure backends
-  include: backend.yml
+  include: nginx-backend.yml
   args:
     backend_name: "{{ item.name }}"
     backend_pool: "{{ item.pool }}"
     backend_listen: "{{ item.listen }}"
     backend_webroot: "{{ item.webroot }}"
   with_items: "{{ nginx_backends }}"
+
+- name: configure domain redirects
+  include: domain-redirect.yml
+  args:
+    redirect_domain: "{{ item.domain }}"
+    redirect_target: "{{ item.target }}"
+    redirect_include_uri: "{{ item.include_uri|default(false) }}"
+  with_items: "{{ nginx_domain_redirects }}"
 
 # Ensure nginx is started and enabled in chkconfig
 - name: start nginx service
