@@ -19,3 +19,9 @@
     owner: root
     group: root
     mode: 0600
+
+- name: selfsign ssl certificates
+  include: ssl-selfsign.yml
+  args:
+    common_name: "{{ item.name }}"
+  with_items: "{{ nginx_vhosts }}"

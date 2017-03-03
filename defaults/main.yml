@@ -7,6 +7,9 @@ nginx_worker_rlimit_nofile: 150000
 
 nginx_groups: []
 
+nginx_logrotate_users: []
+nginx_logrotate_group: www-logs
+
 nginx_vhosts:
   - name:
     pool:
