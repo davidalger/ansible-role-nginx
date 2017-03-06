@@ -9,7 +9,7 @@
 
 - name: configure nginx.conf
   template:
-    src: nginx.conf
+    src: nginx/nginx.conf
     dest: /etc/nginx/nginx.conf
     owner: root
     group: root

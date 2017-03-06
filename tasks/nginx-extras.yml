@@ -1,7 +1,7 @@
 ---
 - name: configure conf.d
   template:
-    src: conf.d/{{ item }}.conf
+    src: nginx/conf.d/{{ item }}.conf
     dest: /etc/nginx/conf.d/{{ item }}.conf
     owner: root
     group: root
@@ -12,7 +12,7 @@
 
 - name: configure default.d
   template:
-    src: default.d/{{ item }}.conf
+    src: nginx/default.d/{{ item }}.conf
     dest: /etc/nginx/default.d/{{ item }}.conf
     owner: root
     group: root
@@ -26,7 +26,7 @@
 
 - name: configure available.d
   template:
-    src: available.d/{{ item }}.conf
+    src: nginx/available.d/{{ item }}.conf
     dest: /etc/nginx/available.d/{{ item }}.conf
     owner: root
     group: root
