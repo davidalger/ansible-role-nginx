@@ -28,28 +28,32 @@ nginx_http_config:
   send_timeout: "1460s"
 nginx_http_additional_config: {}
 
-nginx_vhosts:
-  - name:
-    pool:
-    default: yes
-    params:
-      server_name:
-      webroot:
-      proxy_port:
+nginx_vhosts: []
+
+## Example Usage
+#    nginx_vhosts:
+#      - name:
+#        pool:
+#        default: yes
+#        params:
+#          server_name:
+#          webroot:
+#          proxy_port:
 
 nginx_backends:
-  - name:
-    pool:
-    listen:
-    webroot:
-    includes:
+  - name: www-data
+    pool: data
+    listen: 127.0.0.1:8080
+    webroot: /var/www/html/current
+    includes: []
 
 nginx_domain_redirects: []
-# Example usage:
-#   nginx_domain_redirects:
-#     - domain: www.example.com       (www prefix is stripped in nginx server_name setting)
-#       target: www.target.com
-#       include_uri: no
+
+## Example Usage
+#    nginx_domain_redirects:
+#      - domain: www.example.com       (www prefix is stripped in nginx server_name setting)
+#        target: www.target.com
+#        include_uri: no
 
 nginx_config_hsts: yes
 
