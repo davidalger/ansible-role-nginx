@@ -35,6 +35,7 @@
     backend_pool: "{{ item.pool }}"
     backend_listen: "{{ item.listen }}"
     backend_webroot: "{{ item.webroot }}"
+    backend_includes: "{{ item.includes|default([]) }}"
   with_items: "{{ nginx_backends }}"
 
 - name: configure domain redirects

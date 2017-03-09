@@ -10,6 +10,24 @@ nginx_groups: []
 nginx_logrotate_users: []
 nginx_logrotate_group: www-logs
 
+nginx_http_config:
+  sendfile: "on"
+  autoindex: "off"
+  tcp_nopush: "on"
+  tcp_nodelay: "off"
+  keepalive_timeout: "10s"
+  keepalive_requests: "100"
+  client_header_timeout: "1460s"
+  client_body_timeout: "1460s"
+  client_max_body_size: "200m"
+  reset_timedout_connection: "on"
+  fastcgi_read_timeout: "3600s"
+  proxy_connect_timeout: "3600s"
+  proxy_send_timeout: "3600s"
+  proxy_read_timeout: "3600s"
+  send_timeout: "1460s"
+nginx_http_additional_config: {}
+
 nginx_vhosts:
   - name:
     pool:
@@ -24,11 +42,14 @@ nginx_backends:
     pool:
     listen:
     webroot:
+    includes:
 
-nginx_domain_redirects:
-  - domain:
-    target:
-    include_uri: no
+nginx_domain_redirects: []
+# Example usage:
+#   nginx_domain_redirects:
+#     - domain: www.example.com       (www prefix is stripped in nginx server_name setting)
+#       target: www.target.com
+#       include_uri: no
 
 nginx_config_hsts: yes
 
