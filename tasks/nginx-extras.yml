@@ -1,4 +1,15 @@
 ---
+- file:
+    dest: /etc/nginx/{{ item }}
+    owner: root
+    group: root
+    mode: 0755
+    state: directory
+  with_items:
+    - conf.d
+    - default.d
+    - available.d
+
 - name: configure conf.d
   template:
     src: nginx/conf.d/{{ item }}.conf
