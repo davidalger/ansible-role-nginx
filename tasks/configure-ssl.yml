@@ -7,9 +7,14 @@
     mode: 0600
     state: directory
 
-# this one is expensive... could take over 45 min or run completely in under 5 min
-- name: generate diffe-hellman parameters using 4096 bit long safe prime; this could take a while...
-  command: openssl dhparam -out /etc/nginx/ssl/dhparam.pem 4096
+- debug:
+    msg: Using {{ nginx_diffie_hellman_bits }} bit long safe prime for diffie hellman params; this could take a while...
+  when: nginx_diffie_hellman_bits >= 2048
+
+# this is potentially *very* expensive (i.e. could take over 45 min with default
+# 4096 bit long safe prime; occasionally completes in under 5 min)
+- name: generate diffie-hellman parameters
+  command: openssl dhparam -out /etc/nginx/ssl/dhparam.pem {{ nginx_diffie_hellman_bits|int }}
   args:
     creates: /etc/nginx/ssl/dhparam.pem
 
