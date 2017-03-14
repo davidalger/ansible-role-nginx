@@ -26,6 +26,7 @@
     vhost_default: "{{ item.default|default(true) }}"
     vhost_pool: "{{ item.pool }}"
     vhost_params: "{{ item.params|default({}) }}"
+    vhost_template: "{{ item.template|default('vhost.conf') }}"
   with_items: "{{ nginx_vhosts }}"
 
 - name: configure backends

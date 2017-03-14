@@ -36,11 +36,12 @@ nginx_vhosts: []
 #    nginx_vhosts:
 #      - name:
 #        pool:
-#        default: yes
-#        params:
+#        default: yes (optional)
+#        params: (optional)
 #          server_name:
 #          webroot:
 #          proxy_port:
+#        template: vhost.conf (optional)
 
 nginx_backends:
   - name: www-data

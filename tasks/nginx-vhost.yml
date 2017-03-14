@@ -1,7 +1,7 @@
 ---
 - name: configure vhost {{ vhost_name }}
   template:
-    src: vhost.conf
+    src: "{{ vhost_template }}"
     dest: /etc/nginx/conf.d/{{ vhost_name }}.conf
     owner: root
     group: root
