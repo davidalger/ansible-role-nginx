@@ -46,3 +46,13 @@
     - basicauth
     - php-status
   notify: reload nginx
+
+- name: configure extras
+  template:
+    src: extras/{{ item }}
+    dest: /etc/nginx/{{ item }}
+    owner: root
+    group: root
+    mode: 0644
+  with_items: "{{ nginx_extras }}"
+  notify: reload nginx

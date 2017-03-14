@@ -28,6 +28,8 @@ nginx_http_config:
   send_timeout: "1460s"
 nginx_http_additional_config: {}
 
+nginx_extras: []
+
 nginx_vhosts: []
 
 ## Example Usage

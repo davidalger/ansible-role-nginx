@@ -17,7 +17,7 @@
   notify: reload nginx
   register: nginx_conf_result
 
-- include: nginx-extras.yml
+- include: nginx-config.yml
 
 - name: configure vhosts
   include: nginx-vhost.yml
