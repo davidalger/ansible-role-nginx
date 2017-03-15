@@ -8,8 +8,10 @@
     state: directory
 
 - debug:
-    msg: Using {{ nginx_diffie_hellman_bits }} bit long safe prime for diffie hellman params; this could take a while...
-  when: nginx_diffie_hellman_bits >= 2048
+    msg: >-
+      Generating diffie-hellman using a {{ nginx_diffie_hellman_bits }} bit long safe prime; values greater
+      than 2048 bits can easily cause generation to take upwards of an hr or longer to complete!
+  when: nginx_diffie_hellman_bits > 2048
 
 # this is potentially *very* expensive (i.e. could take over 45 min with default
 # 4096 bit long safe prime; occasionally completes in under 5 min)
