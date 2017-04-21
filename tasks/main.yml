@@ -2,6 +2,9 @@
 - name: install nginx
   yum: name=nginx
 
+- name: install httpd-tools
+  package: name=httpd-tools
+
 - include: configure-nginx.yml
 - include: configure-ssl.yml
 - include: configure-logrotate.yml
