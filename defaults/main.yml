@@ -63,7 +63,7 @@ nginx_domain_redirects: []
 #        target: www.target.com
 #        include_uri: no
 
-nginx_diffie_hellman_bits: 4096
+nginx_diffie_hellman_bits: 2048
 nginx_config_hsts: yes
 
 # Optional array of additional IPs (may use CIDR notation) to whitelist in basicauth configuration
