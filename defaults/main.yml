@@ -43,6 +43,10 @@ nginx_vhosts: []
 #          proxy_port:
 #        template: vhost.conf (optional)
 
+# Default vhost includes
+nginx_vhost_includes:
+  - default.d/*.conf
+
 nginx_backends:
   - name: www-data
     pool: data
