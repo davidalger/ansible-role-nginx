@@ -4,11 +4,12 @@
 /var/log/nginx/*.log {
     daily
     missingok
-    rotate 52
+    rotate 365
     compress
     delaycompress
     notifempty
     create 640 {{ nginx_user }} {{ nginx_logrotate_group }}
+    dateext
     sharedscripts
     postrotate
         if [ -f /var/run/nginx.pid ]; then
