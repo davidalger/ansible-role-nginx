@@ -28,6 +28,17 @@ nginx_http_config:
   send_timeout: "1460s"
 nginx_http_additional_config: {}
 
+## Example usage:
+#    nginx_extras:
+#      - conf.d/map.conf
+#
+#    nginx_extras:
+#      - dest: conf.d/map.conf
+#      - src: extras/overrides/conf.d/map.conf
+#
+# This above two examples demonstrate two ways to specify members of this array. They may be used in
+# conjunction with one another or indiviudally.
+
 nginx_extras: []
 
 nginx_vhosts: []
