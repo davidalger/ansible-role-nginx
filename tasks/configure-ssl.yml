@@ -32,3 +32,9 @@
   args:
     common_name: "{{ item.name }}"
   with_items: "{{ nginx_vhosts }}"
+
+- name: selfsign ssl certificates (domain redirects)
+  include: ssl-selfsign.yml
+  args:
+    common_name: "{{ item.domain }}"
+  with_items: "{{ nginx_domain_redirects }}"
