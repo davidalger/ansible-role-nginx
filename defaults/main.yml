@@ -47,7 +47,6 @@ nginx_vhosts: []
 #    nginx_vhosts:
 #      - name:
 #        pool:
-#        default: yes (optional)
 #        params: (optional)
 #          server_name:
 #          webroot:
@@ -70,13 +69,13 @@ nginx_backend_includes:
   - default.d/settings.conf
   - available.d/php-status.conf
 
-nginx_domain_redirects: []
-
 ## Example Usage
 #    nginx_domain_redirects:
 #      - domain: www.example.com       (www prefix is stripped in nginx server_name setting)
 #        target: www.target.com
-#        include_uri: no
+#        include_uri: no (optional; default is no)
+
+nginx_domain_redirects: []
 
 # Session resumption for improved https performance
 nginx_ssl_session_cache: shared:SSL:10m

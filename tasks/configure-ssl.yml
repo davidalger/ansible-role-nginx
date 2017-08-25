@@ -27,6 +27,11 @@
     group: root
     mode: 0600
 
+- name: selfsign default certificate
+  include: ssl-selfsign.yml
+  args:
+    common_name: default
+
 - name: selfsign ssl certificates
   include: ssl-selfsign.yml
   args:
