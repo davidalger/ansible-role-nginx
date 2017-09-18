@@ -78,6 +78,7 @@ nginx_backend_includes:
 #      - domain: www.example.com       (www prefix is stripped in nginx server_name setting)
 #        target: www.target.com
 #        include_uri: no (optional; default is no)
+#        additional_configs: "include /etc/nginx/default.d/redirects.conf;"  (optional; default is empty)
 
 nginx_domain_redirects: []
 
