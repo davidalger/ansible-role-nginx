@@ -79,6 +79,7 @@ nginx_backend_includes:
 #        target: www.target.com
 #        include_uri: no (optional; default is no)
 #        additional_configs: "include /etc/nginx/default.d/redirects.conf;"  (optional; default is empty)
+#        protocol: https (optional; default is $schema which will retain the original request protocol)
 
 nginx_domain_redirects: []
 

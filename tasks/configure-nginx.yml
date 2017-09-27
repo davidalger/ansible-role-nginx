@@ -46,4 +46,5 @@
     redirect_target: "{{ item.target }}"
     redirect_include_uri: "{{ item.include_uri|default(false) }}"
     additional_configs: "{{ item.additional_configs|default(false) }}"
+    protocol: "{{ item.protocol|default(false) }}"
   with_items: "{{ nginx_domain_redirects }}"
