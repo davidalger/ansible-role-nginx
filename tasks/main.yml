@@ -5,9 +5,9 @@
 - name: install httpd-tools
   package: name=httpd-tools
 
-- include: configure-nginx.yml
-- include: configure-ssl.yml
-- include: configure-logrotate.yml
+- import_tasks: configure-nginx.yml
+- import_tasks: configure-ssl.yml
+- import_tasks: configure-logrotate.yml
 
 - name: start nginx service
   service:

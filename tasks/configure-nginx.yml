@@ -17,10 +17,10 @@
   notify: reload nginx
   register: nginx_conf_result
 
-- include: nginx-config.yml
+- import_tasks: nginx-config.yml
 
 - name: configure vhosts
-  include: nginx-vhost.yml
+  include_tasks: nginx-vhost.yml
   args:
     vhost_name: "{{ item.name }}"
     vhost_pool: "{{ item.pool }}"
@@ -30,7 +30,7 @@
   with_items: "{{ nginx_vhosts }}"
 
 - name: configure backends
-  include: nginx-backend.yml
+  include_tasks: nginx-backend.yml
   args:
     backend_name: "{{ item.name }}"
     backend_pool: "{{ item.pool }}"
@@ -40,7 +40,7 @@
   with_items: "{{ nginx_backends }}"
 
 - name: configure domain redirects
-  include: domain-redirect.yml
+  include_tasks: domain-redirect.yml
   args:
     redirect_domain: "{{ item.domain }}"
     redirect_target: "{{ item.target }}"
