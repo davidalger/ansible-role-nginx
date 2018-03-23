@@ -1,7 +1,7 @@
 ---
 - name: configure backend {{ backend_name }}
   template:
-    src: backend.conf
+    src: "{{ backend_template }}"
     dest: /etc/nginx/conf.d/{{ backend_name }}_backend.conf
     owner: root
     group: root

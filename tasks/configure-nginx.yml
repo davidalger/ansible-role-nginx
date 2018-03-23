@@ -36,6 +36,7 @@
     backend_pool: "{{ item.pool }}"
     backend_listen: "{{ item.listen }}"
     backend_webroot: "{{ item.webroot }}"
+    backend_template: "{{ item.template|default('backend.conf') }}"
     backend_includes: "{{ item.includes|default([]) }} + {{ nginx_backend_includes }}"
   with_items: "{{ nginx_backends }}"
 

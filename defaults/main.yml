@@ -67,6 +67,7 @@ nginx_backends:
     listen: 127.0.0.1:8080
     webroot: /var/www/html/current
     includes: []
+#   template: backend.conf (optional)
 
 # Default backend include files
 nginx_backend_includes:
