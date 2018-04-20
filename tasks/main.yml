@@ -1,4 +1,17 @@
 ---
+- name: install yum-plugin-post-transaction-actions
+  package:
+    name: yum-plugin-post-transaction-actions
+    state: present
+
+- name: install post-transaction-action
+  template:
+    src: nginx.action.j2
+    dest: /etc/yum/post-actions/nginx.action
+    owner: root
+    group: root
+    mode: 0600
+
 - name: install nginx
   yum: name=nginx
 
