@@ -1,6 +1,6 @@
 # Ansible Role: Nginx
 
-[![Build Status](https://travis-ci.org/davidalger/ansible-role-nginx.svg?branch=master)](https://travis-ci.org/davidalger/ansible-role-nginx)
+[![Build Status](https://travis-ci.com/davidalger/ansible-role-nginx.svg?branch=master)](https://travis-ci.com/davidalger/ansible-role-nginx)
 
 Installs nginx service from EPEL RPMs on RHEL / CentOS 7.
 
