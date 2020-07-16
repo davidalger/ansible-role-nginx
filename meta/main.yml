@@ -1,6 +1,7 @@
 ---
 dependencies:
   - {role: geerlingguy.repo-epel, when: use_geerlingguy_repo_epel | default(true)}
+  - {role: davidalger.selinux, when: use_davidalger_selinux | default(true)}
 
 galaxy_info:
   role_name: nginx

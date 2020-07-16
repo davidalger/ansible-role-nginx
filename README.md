@@ -17,6 +17,7 @@ See `defaults/main.yml` for details.
 ## Dependencies
 
 * `geerlingguy.repo-epel`
+* `davidalger.selinux`
 
 ## Example Playbook
 

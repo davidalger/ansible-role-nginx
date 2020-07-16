@@ -1,0 +1,7 @@
+---
+# Use of worker_rlimit_nofile in Nginx configuration requires httpd_setrlimit
+- name: Allow httpd_setrlimit flag on and keep it persistent across reboots
+  seboolean:
+    name: httpd_setrlimit
+    state: yes
+    persistent: yes
