@@ -37,6 +37,9 @@ nginx_server_additional_config: {}
 nginx_status_allow:
   - "{{ ansible_default_ipv4.address }}"
 
+# List of pipe-separated IP addresses for use in match expression bypassing the maintenance page when enabled
+nginx_maintenance_bypass: "127.0.0.1"
+
 ## Example usage:
 #    nginx_extras:
 #      - conf.d/map.conf
@@ -59,8 +62,9 @@ nginx_vhosts: []
 #        params: (optional)
 #          server_name:
 #          webroot:
-#          maintenance_flag: (optional)
+#          maintenance_flag: (optional; defaults to /etc/nginx/maintenance.enable)
 #          maintenance_file: (optional; defaults to /maintenance.html)
+#          maintenance_bypass: (optional; defaults 'nginx_maintenance_bypass' value or 127.0.0.1 if not set)
 #          proxy_port:
 #        template: vhost.conf (optional)
 
