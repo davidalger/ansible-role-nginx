@@ -59,6 +59,8 @@ nginx_vhosts: []
 #        params: (optional)
 #          server_name:
 #          webroot:
+#          maintenance_flag: (optional)
+#          maintenance_file: (optional; defaults to /maintenance.html)
 #          proxy_port:
 #        template: vhost.conf (optional)
 
