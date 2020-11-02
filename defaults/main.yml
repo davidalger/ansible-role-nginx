@@ -10,6 +10,9 @@ nginx_groups: []
 nginx_logrotate_users: []
 nginx_logrotate_group: www-logs
 
+# When true templates will be deployed with automatic newrelic.appname values applied
+nginx_newrelic_appname: false
+
 nginx_http_config:
   sendfile: "on"
   autoindex: "off"
