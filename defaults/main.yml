@@ -11,7 +11,10 @@ nginx_logrotate_users: []
 nginx_logrotate_group: www-logs
 
 # When true templates will be deployed with automatic newrelic.appname values applied
-nginx_newrelic_appname: false
+nginx_newrelic_appname: "{{
+  (newrelic_apm_license is defined and newrelic_apm_license)
+  or (newrelic_apm_key is defined and newrelic_apm_key)
+}}"
 
 nginx_http_config:
   sendfile: "on"
